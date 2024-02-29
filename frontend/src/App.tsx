@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import NavbarMenu from "./components/NavbarMenu";
+import CardOptions from "./components/CardOptions";
+import AddModal from "./components/AddModal";
+import EditModal from "./components/EditModal";
+import AddProjectModal from "./components/AddProjectModal";
+import ConfirmationDialog from "./components/ConfirmationDialog";
+import ModalSuceed from "./components/ModalSuceed";
+import Container from "./components/Container";
+import Card from "./components/Card";
+import Table from "./components/Table";
+import StateProvider from "./providers/AppContext";
+import QueryProvider from "./providers/QueryProvider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <StateProvider>
+        <Header />
+        <Navbar />
+        <QueryProvider>
+          <Container>
+            <Card />
+            <NavbarMenu />
+            <Table />
+          </Container>
+          <CardOptions />
+          <AddModal />
+          <EditModal />
+          <AddProjectModal />
+          <ConfirmationDialog />
+        </QueryProvider>
+        <ModalSuceed />
+      </StateProvider>
+    </>
   );
 }
 
